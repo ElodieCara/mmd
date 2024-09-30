@@ -1,0 +1,171 @@
+.Navbar {
+    background-color: black;
+    width: 100%;
+    height: 38px;
+    padding: 5px;
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &__mmd {
+            position: relative;
+            font-weight: bold;
+            color: white;
+            overflow: hidden;
+
+
+            // Texte "Mes Moires" au-dessus de tout
+            &__phare {
+                position: relative;
+                display: inline-block;
+                z-index: 3; // Texte au-dessus des cercles et du phare
+                max-width: 100%;
+                width: 160px;
+
+                // Phare en arrière-plan (sous les cercles)
+                // &::before {
+                //     content: '';
+                //     position: absolute;
+                //     top: 50%;
+                //     left: 200px; // Commence en dehors du texte
+                //     width: 60px;
+                //     height: 60px;
+                //     background: radial-gradient(circle, rgba(255, 0, 0, 0.8) 0%, rgba(255, 0, 0, 0) 70%);
+                //     transform: translateY(-50%);
+                //     animation: lighthouse-effect 3s infinite linear;
+                //     z-index: 1; // Phare sous les cercles et le texte
+                // }
+
+                // Conteneur des cercles sous les lettres
+                &__circles-container {
+                    display: flex;
+                    justify-content: space-between;
+                    position: absolute;
+                    bottom: 1px; // Ajustement pour les placer sous les lettres
+                    left: 45%; // Centrer par rapport au texte
+                    transform: translateX(-50%);
+                    width: 157px;
+                    z-index: -2; // Les cercles entre les lettres et le phare
+
+                    .circle {
+                        width: 30px; // Taille ajustée pour les ronds
+                        height: 30px;
+                        border-radius: 50%;
+                    }
+
+                    .red {
+                        background-color: red;
+                    }
+
+                    .white {
+                        background-color: white;
+                    }
+                }
+            }
+
+            &__white {
+                color: white;
+            }
+
+            &__red {
+                color: red; // Utilisation de "red" directement pour simplifier
+            }
+        }
+
+        // Animation du phare
+        @keyframes lighthouse-effect {
+            0% {
+                left: -200px; // Commence hors de l'écran à gauche
+            }
+
+            50% {
+                left: calc(100% - 100px); // Passe par le centre
+            }
+
+            100% {
+                left: -200px; // Revient au début
+            }
+        }
+
+        &__content {
+            display: flex;
+            align-items: center;
+            padding: 0px 20px;
+
+            &__social {
+                display: flex;
+
+                & span {
+                    font-size: 12px;
+                    color: gray; // Remplace $tertiary-color par gray si la variable n'est pas définie
+                    padding: 0px 3px;
+                }
+
+                &__red {
+                    color: red !important;
+                }
+            }
+
+            &__icon img {
+                width: 30px;
+                height: 30px;
+                margin-top: 10px;
+                padding: 0px 20px;
+            }
+
+            &__switcher {
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+
+                &-switch {
+                    position: relative;
+                    display: inline-block;
+                    width: 40px;
+                    height: 20px;
+
+                    & input {
+                        opacity: 0;
+                        width: 0;
+                        height: 0;
+                    }
+
+                    & input:checked+.Navbar__container__content__switcher-slider {
+                        background-color: red; // Utilisation directe de "red" si $secondary-color est indisponible
+                    }
+
+                    & input:checked+.Navbar__container__content__switcher-slider::before {
+                        transform: translateX(20px);
+                    }
+                }
+
+                &-slider {
+                    position: absolute;
+                    cursor: pointer;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-color: #ccc;
+                    transition: 0.4s;
+                    border-radius: 20px;
+
+                    &::before {
+                        position: absolute;
+                        content: "";
+                        height: 16px;
+                        width: 16px;
+                        left: 2px;
+                        bottom: 2px;
+                        background-color: white;
+                        transition: 0.4s;
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+    }
+}
