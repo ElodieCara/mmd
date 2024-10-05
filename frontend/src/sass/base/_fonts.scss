@@ -7,6 +7,9 @@
 body {
     font-family: $font-family-primary;
     background-color: $background-color;
+
+
+
 }
 
 
@@ -15,4 +18,12 @@ body {
 body.dark-mode {
     background-color: black;
     color: white;
+}
+
+hr {
+    border: none;
+    height: 5px;
+    /* Épaisseur du trait */
+    background-color: black;
+    /* Couleur du trait */
 }

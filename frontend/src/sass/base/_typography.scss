@@ -9,6 +9,27 @@ h3 {
 span {
   font-family: $font-family-primary;
   font-size: 22px;
-  font-weight: bold;
+  font-weight: bolder;
 
+}
+
+
+h2 {
+  font-size: 1.2rem; // Taille par défaut pour les écrans plus grands
+
+  @include respond-to(tablet) {
+    font-size: 1rem; // Taille pour les tablettes
+  }
+
+  @include respond-to(mobile) {
+    font-size: 0.5rem; // Taille pour les mobiles
+  }
+}
+
+h4 {
+  color: black;
+  font-size: large;
+  font-weight: bold;
+  // position: relative;
+  // z-index: 2000;
 }
