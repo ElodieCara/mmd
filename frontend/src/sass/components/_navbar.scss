@@ -1,13 +1,13 @@
 .Navbar {
     background-color: black;
     width: 100%;
-    height: 38px;
     padding: 5px;
 
     &__container {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-left: 20px;
 
         &__mmd {
             position: relative;

@@ -62,4 +62,23 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+// Route pour incrémenter les vues d'un article
+router.post('/views', async (req, res) => {
+  const { articleId } = req.body;
+
+  try {
+    // Rechercher l'article par son ID et incrémenter les vues
+    const article = await Article.findById(articleId);
+    if (article) {
+      article.views += 1; // Incrémenter les vues
+      await article.save(); // Sauvegarder les modifications
+      res.status(200).json(article); // Envoyer l'article mis à jour
+    } else {
+      res.status(404).json({ message: 'Article not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Erreur serveur', error });
+  }
+});
+
 module.exports = router;

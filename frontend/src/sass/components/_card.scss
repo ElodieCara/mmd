@@ -1,0 +1,314 @@
+.Card {
+    max-width: 300px;
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: white;
+    font-family: Arial, sans-serif;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        gap: 1rem;
+
+        &__top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgb(173, 173, 173);
+
+            &__date {
+                display: flex;
+                flex-direction: row;
+                font-size: 1.5em;
+                font-weight: bold;
+                align-items: flex-end;
+
+                .date-number {
+                    font-size: 2em;
+                }
+
+                .date-month {
+                    font-size: 1em;
+                    text-transform: uppercase;
+                    font-weight: normal;
+                }
+            }
+
+            &__button {
+                .red-circle {
+                    width: 20px;
+                    height: 20px;
+                    background-color: red;
+                    border-radius: 50%;
+                }
+            }
+
+            hr {
+                width: 100%;
+                margin-top: 10px;
+                border: none;
+                border-top: 1px solid rgba(0, 0, 0, 0.1);
+            }
+        }
+
+        &__body {
+            display: flex;
+            flex-direction: column;
+
+            &__image {
+                width: 100%;
+                height: 150px;
+                overflow: hidden;
+
+                & img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 10px;
+                }
+            }
+
+            &__bottom {
+                padding: 20px 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                h5,
+                p {
+                    font-size: 1.2em;
+                    margin: 0;
+                    text-align: left;
+                }
+
+                p {
+                    font-size: 0.9em;
+                    color: #777;
+                }
+            }
+
+
+        }
+
+        &__button {
+            padding: 8px 12px;
+            background-color: white;
+            border: 2px solid red;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+
+            &:hover {
+                box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+            }
+        }
+    }
+
+    &--popular {
+        max-width: 100%;
+        height: 150px;
+        width: 100%;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1),
+            /* Ombre subtile */
+            0 10px 15px rgba(0, 0, 0, 0.2);
+        /* Ombre plus prononcée en bas */
+        overflow: hidden;
+        background-color: white;
+        font-family: Arial, sans-serif;
+        background-color: transparent;
+        margin-bottom: 18px;
+
+
+        .Card__container {
+            height: 100%;
+            padding: 15px;
+            display: flex;
+            flex-direction: row;
+            box-sizing: border-box;
+            align-items: center;
+            gap: 1rem;
+
+            & * {
+                box-sizing: inherit;
+            }
+
+            &__top {
+                display: none;
+            }
+
+            &__body {
+                display: flex;
+                flex-direction: row;
+
+                &__image {
+                    flex: 0 0 40%;
+                    overflow: hidden;
+                    height: 80%;
+
+                    & img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                &__bottom {
+                    padding: 20px 0;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    &__text {
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        /* Centrer verticalement le texte */
+                        padding: 5px;
+
+                        h5,
+                        p {
+                            margin: 0;
+                            /* Supprimer les marges par défaut */
+                            line-height: 1.2em;
+                            /* Réduire l'interligne */
+                        }
+
+                        h5 {
+                            font-size: 1em;
+                            /* Réduire la taille de police */
+                        }
+
+                        p {
+                            font-size: 0.8em;
+                            /* Réduire la taille de police */
+                        }
+                    }
+
+                    &__view {
+                        font-size: 0.7em;
+                    }
+                }
+            }
+
+            &__button {
+                display: none;
+
+            }
+
+        }
+
+
+    }
+
+    /* Style spécial pour la première card (la plus populaire) */
+    &--highlight {
+        max-width: 300px;
+        width: 100%;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        background-color: transparent;
+        /* Fond transparent */
+        // padding: 20px;
+        overflow: hidden;
+        position: relative;
+        font-family: Arial, sans-serif;
+
+
+
+        .Card__container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            gap: 2rem;
+
+
+            /* Pas de bouton, pas de point rouge, pas de date */
+            &__top {
+                display: flex;
+                border-bottom: 0.1px solid grey;
+                height: 30px;
+                background-image: url('../assets/balle.svg');
+                background-size: contain;
+                background-position: left;
+                background-repeat: no-repeat;
+
+
+
+                /* On masque la partie supérieure, s'il n'y a pas d'éléments */
+
+
+                &__date {
+                    display: none;
+                }
+
+                &__button {
+                    display: none;
+                }
+            }
+
+            &__body {
+                display: flex;
+                flex-direction: row;
+
+                &__image {
+                    flex: 0 0 40%;
+                    overflow: hidden;
+                    height: 80%;
+
+                    & img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                &__bottom {
+
+                    &__text {
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        /* Centrer verticalement le texte */
+                        padding: 5px;
+
+                        h5,
+                        p {
+                            margin: 0;
+                            /* Supprimer les marges par défaut */
+                            line-height: 1.2em;
+                            /* Réduire l'interligne */
+                        }
+
+                        h5 {
+                            font-size: 1em;
+                            /* Réduire la taille de police */
+                        }
+
+                        p {
+                            font-size: 0.8em;
+                            /* Réduire la taille de police */
+
+                        }
+                    }
+
+                    &__view {
+                        font-size: 0.7em;
+                    }
+                }
+            }
+
+            &__button {
+                display: none;
+
+            }
+
+        }
+    }
+}
