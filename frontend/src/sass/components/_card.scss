@@ -207,10 +207,13 @@
 
     /* Style spécial pour la première card (la plus populaire) */
     &--highlight {
-        max-width: 300px;
+        max-width: 100% !important;
         width: 100%;
         border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1),
+            /* Ombre subtile */
+            0 10px 15px rgba(0, 0, 0, 0.2);
+        /* Ombre plus prononcée en bas */
         background-color: transparent;
         /* Fond transparent */
         // padding: 20px;

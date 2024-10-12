@@ -10,14 +10,32 @@
         justify-content: space-between;
         align-items: center;
         height: 50px;
+        padding: 0 60px;
 
 
-        & * {
+        &-left {
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 0.5rem;
-            padding-left: 1rem;
+            flex-basis: 20%;
+        }
+
+        &-middle {
+            display: flex;
+            justify-content: left;
+            align-items: self-start;
+            gap: 2rem;
+            padding-left: 2rem;
+            flex-basis: 60%;
+        }
+
+        &-right {
+            background-image: url('../assets/balle.svg');
+            flex-basis: 20%;
+            background-repeat: no-repeat;
+            background-position: right;
+            height: 100%;
         }
     }
 
@@ -44,19 +62,19 @@
             flex-direction: column;
             padding: 30px;
             flex-basis: 20%;
+            gap: 20px;
 
             &__content {
                 display: flex;
-                // flex-direction: column;
-
+                margin: 30px 0;
                 gap: 1rem;
-                flex-basis: 20%;
-                padding: 0 50px 0 0;
+
+
 
                 &__card--hastag {
                     flex-basis: 50%;
-                    padding: 15px 20px 50px 10px;
-                    border-radius: 30px;
+                    height: 100px;
+                    border-radius: 10px;
                     background-position: top;
                     box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
                     background-size: cover;
@@ -130,6 +148,7 @@
             flex-direction: column;
             padding: 30px;
             flex-basis: 60%;
+            gap: 20px;
 
             &__cards {
                 display: flex;
@@ -162,10 +181,13 @@
             flex-direction: column;
             padding: 30px;
             flex-basis: 20%;
-            gap: 2rem;
+            gap: 20px;
+            height: 100%;
 
             &__content {
-
+                & * {
+                    margin: 30px 0;
+                }
 
                 & h3 {
                     font-size: 45px;
@@ -176,7 +198,7 @@
         }
 
         .card-1 {
-            flex-basis: 35%;
+            flex-basis: 25%;
             height: 100%;
             border-radius: 30px;
             box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
@@ -194,7 +216,7 @@
         }
 
         .card-2 {
-            flex-basis: 65%;
+            flex-basis: 70%;
             // width: 573px;
             height: 405px;
             border-radius: 30px;

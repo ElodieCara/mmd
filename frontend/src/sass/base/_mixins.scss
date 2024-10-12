@@ -1,25 +1,167 @@
 // _mixins.scss
 @mixin flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  @mixin respond-to($breakpoint) {
-    @if $breakpoint == mobile {
-      @media (max-width: 600px) { @content; }
-    }
-    @else if $breakpoint == tablet {
-      @media (max-width: 900px) { @content; }
-    }
-    @else if $breakpoint == desktop {
-      @media (min-width: 900px) { @content; }
-    }
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .container {
-    @include flex-center;
-    height: 100vh;
+@mixin respond-to($breakpoint) {
+  @if $breakpoint ==mobile {
+    @media (max-width: 600px) {
+      @content;
+    }
   }
-  
+
+  @else if $breakpoint ==tablet {
+    @media (max-width: 900px) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint ==desktop {
+    @media (min-width: 900px) {
+      @content;
+    }
+  }
+}
+
+
+.container {
+  @include flex-center;
+  height: 100vh;
+}
+
+/* Effet de spot lumineux sur les cercles */
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+// Animation du phare
+@keyframes lighthouse-effect {
+  0% {
+    left: -200px; // Commence hors de l'écran à gauche
+  }
+
+  50% {
+    left: calc(100% - 100px); // Passe par le centre
+  }
+
+  100% {
+    left: -200px; // Revient au début
+  }
+}
+
+/* Animation douce du spot lumineux */
+@keyframes spotlight-effect {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.9;
+  }
+}
+
+/* Animation du spot lumineux */
+@keyframes spotlight-sweep {
+  0% {
+    left: -200px;
+  }
+
+  50% {
+    left: calc(50% - 100px);
+    /* Spot au milieu */
+  }
+
+  100% {
+    left: 100%;
+    /* Spot finit à droite */
+  }
+}
+
+/* Animation pour révéler progressivement le texte */
+@keyframes textReveal {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+/* Animation pour faire "clignoter" les cercles */
+@keyframes circleFlicker {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+/* Animation de grésillement avec un allumage final */
+@keyframes flicker {
+  0% {
+    opacity: 0.2;
+  }
+
+  10% {
+    opacity: 0.8;
+  }
+
+  20% {
+    opacity: 0.1;
+  }
+
+  30% {
+    opacity: 0.9;
+  }
+
+  40% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+
+  60% {
+    opacity: 0.4;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 0.2;
+  }
+
+  90% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 1;
+    /* Allumage complet */
+  }
+}

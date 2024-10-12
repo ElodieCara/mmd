@@ -19,7 +19,7 @@ export const Navbar = () => {
     return (
         <div className='Navbar'>
             <div className='Navbar__container'>
-                <div className='Navabar__container__mmd'>
+                <div className='Navbar__container__mmd'>
                     <span className='Navbar__container__mmd__phare'>Mes Moires
                         <div className="Navbar__container__mmd__phare__circles-container">
                             {['red', 'red', 'red', 'white', 'red'].map((color, index) => (

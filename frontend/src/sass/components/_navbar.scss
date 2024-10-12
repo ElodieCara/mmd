@@ -10,10 +10,10 @@
         margin-left: 20px;
 
         &__mmd {
-            position: relative;
+            // position: relative;
             font-weight: bold;
-            color: white;
-            overflow: hidden;
+            // color: white;
+            // overflow: hidden;
 
 
             // Texte "Mes Moires" au-dessus de tout
@@ -24,17 +24,17 @@
                 max-width: 100%;
                 width: 160px;
 
-                // Phare en arrière-plan (sous les cercles)
+                // // Phare en arrière-plan (sous les cercles)
                 // &::before {
                 //     content: '';
                 //     position: absolute;
                 //     top: 50%;
-                //     left: 200px; // Commence en dehors du texte
-                //     width: 60px;
+                //     left: -44px;
+                //     width: 239px;
                 //     height: 60px;
                 //     background: radial-gradient(circle, rgba(255, 0, 0, 0.8) 0%, rgba(255, 0, 0, 0) 70%);
                 //     transform: translateY(-50%);
-                //     animation: lighthouse-effect 3s infinite linear;
+
                 //     z-index: 1; // Phare sous les cercles et le texte
                 // }
 
@@ -53,14 +53,21 @@
                         width: 30px; // Taille ajustée pour les ronds
                         height: 30px;
                         border-radius: 50%;
+                        background-color: red;
+                        opacity: 0;
+                        border-radius: 50%;
+                        animation: flicker 2s ease-in-out;
+                        animation-fill-mode: forwards;
                     }
 
                     .red {
                         background-color: red;
+                        animation-delay: 0.2s;
                     }
 
                     .white {
                         background-color: white;
+                        animation-delay: 0.1s;
                     }
                 }
             }
