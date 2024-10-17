@@ -12,14 +12,27 @@ import croisés from '../assets/grace.webp';
 import { Card } from '../components/Card';
 
 // Exemple de données d'articles (simulé au départ)
-const articles = [
-  { id: 1, title: "Article 1", image: MdnL, views: 150 },
-  { id: 2, title: "Article 2", image: MesMoires, views: 500 },
-  { id: 3, title: "Article 3", image: fil, views: 300 },
-];
+// const articles = [
+//   { id: 1, title: "Article 1", image: MdnL, views: 150 },
+//   { id: 2, title: "Article 2", image: MesMoires, views: 500 },
+//   { id: 3, title: "Article 3", image: fil, views: 300 },
+// ];
 
 export default function Home() {
-  const [articleData, setArticleData] = useState(articles);
+  const [articleData, setArticleData] = useState([]);
+  const [displayedArticles, setDisplayedArticles] = useState(6); // Limite initiale à 6 articles
+  const maxPopularArticles = 4; // Limite à 6 articles pour les articles populaires
+
+  // Récupérer les articles depuis le backend avec Axios
+  useEffect(() => {
+    axios.get('http://localhost:5001/api/articles')  // Appel à ton backend
+      .then(response => {
+        setArticleData(response.data);  // Mets à jour l'état avec les articles récupérés
+      })
+      .catch(error => {
+        console.error('Erreur lors de la récupération des articles:', error);  // Affiche l'erreur en cas de problème
+      });
+  }, []);
 
   // Fonction pour gérer l'incrémentation des clics
   const handleClick = async (id) => {
@@ -47,6 +60,10 @@ export default function Home() {
   const sortedArticles = [...articleData].sort((a, b) => b.views - a.views);
   const mostViewedArticle = sortedArticles.length > 0 ? sortedArticles[0] : null; // Article avec le plus de vues
   const otherArticles = sortedArticles.slice(1); // Les autres articles
+
+  const handleShowMore = () => {
+    setDisplayedArticles(displayedArticles + 6); // Affiche 6 articles supplémentaires à chaque clic
+  };
 
   return (
     <div>
@@ -129,17 +146,29 @@ export default function Home() {
               </div>
             </div>
 
+            {/* ---------- Middle Section ------------ */}
             <div className="Home__container__section--middle__block">
               <hr />
               <h4>News</h4>
               <div className="Home__container__section--middle__block__cards">
-                <Card className="Card Card--news" />
-                <Card className="Card--news" />
-                <Card className="Card--news" />
-                <Card className="Card--news" />
-                <Card className="Card--news" />
-                <Card className="Card--news" />
+                {articleData.slice(0, displayedArticles).map(article => (
+                  <Card className="Card Card--news"
+                    key={article._id}  // Utilise l'ID unique de l'article
+                    title={article.title}  // Titre de l'article
+                    image={article.image}  // Image associée à l'article
+                    views={article.views}  // Nombre de vues
+                    onClick={() => handleClick(article._id)} /> // Gestion du clic pour incrémenter les vues
+                ))}
               </div>
+
+              {/* Bouton Voir Plus */}
+              {displayedArticles < articleData.length && (
+                <div className="see-more-container">
+                  <button onClick={handleShowMore} className="see-more-btn">
+                    Voir plus d'articles
+                  </button>
+                </div>
+              )}
             </div>
           </div>
           {/* ----------- Right Section ------------ */}
@@ -159,20 +188,20 @@ export default function Home() {
                 title={mostViewedArticle.title}
                 image={mostViewedArticle.image}
                 views={mostViewedArticle.views}
-                onClick={() => handleClick(mostViewedArticle.id)} // Gestion du clic
+                onClick={() => handleClick(mostViewedArticle._id)} // Gestion du clic
               />
             )}
             {/* Affichage des articles */}
             <div className="Home__container__section--right__cards">
 
-              {otherArticles.map((article) => (
+              {otherArticles.slice(0, maxPopularArticles).map((article) => (
                 <Card
-                  key={article.id}
+                  key={article._id}
                   className="Card--popular"
                   title={article.title}
                   image={article.image}
                   views={article.views}
-                  onClick={() => handleClick(article.id)} // Gérer le clic
+                  onClick={() => handleClick(article._id)} // Gérer le clic
                 />
               ))}
             </div>

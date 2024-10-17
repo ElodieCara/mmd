@@ -10,6 +10,9 @@ const port = 5001;
 // Configurer dotenv pour accéder à votre fichier .env
 dotenv.config();
 
+// Ajouter un console.log pour vérifier la valeur de MONGO_URI
+console.log('Mongo URI:', process.env.MONGO_URI);
+
 // Middleware
 app.use(cors());
 app.use(express.json());
