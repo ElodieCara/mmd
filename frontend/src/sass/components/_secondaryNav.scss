@@ -1,0 +1,37 @@
+.SecondaryNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 0 60px;
+
+    .active-link {
+        color: $secondary-color;
+    }
+
+
+    &__left {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+        flex-basis: 20%;
+    }
+
+    &__middle {
+        display: flex;
+        justify-content: left;
+        align-items: self-start;
+        gap: 2rem;
+        padding-left: 2rem;
+        flex-basis: 60%;
+    }
+
+    &__right {
+        background-image: url('../assets/balle.svg');
+        flex-basis: 20%;
+        background-repeat: no-repeat;
+        background-position: right;
+        height: 100%;
+    }
+}

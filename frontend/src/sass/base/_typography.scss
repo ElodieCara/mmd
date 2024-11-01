@@ -1,14 +1,32 @@
 // _typography.scss
+a {
+  text-decoration: none;
+  color: black;
+}
+
 h1,
 h2,
-h3 {
+h3,
+h5 {
   font-family: $font-family-primary;
 }
 
+p {
+  font-family: $font-family-secondary;
+}
+
+p::first-letter {
+  font-size: 4em;
+  font-weight: bold;
+  color: black;
+  float: left;
+  line-height: 1;
+  margin-right: 0.1em;
+}
 
 span {
   font-family: $font-family-primary;
-  font-size: 22px;
+  font-size: 12px;
   font-weight: bolder;
 
 }

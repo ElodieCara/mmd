@@ -6,6 +6,7 @@ import Contact from "./pages/Contact";
 import ErrorPage from "./pages/ErrorPage"; // Vérifie que ce fichier existe
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./sass/style.scss";
+import AllArticles from "./pages/AllArticles";
 
 // Configuration des routes avec createBrowserRouter
 const router = createBrowserRouter([
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <Home />, // Composant Home
     errorElement: <ErrorPage />, // Composant pour la gestion des erreurs 404
+  },
+  {
+    path: "/all-articles",
+    element: <AllArticles />
   },
   {
     path: "/about",

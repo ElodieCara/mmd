@@ -24,7 +24,6 @@ export const Navbar = () => {
                         <div className="Navbar__container__mmd__phare__circles-container">
                             {['red', 'red', 'red', 'white', 'red'].map((color, index) => (
                                 <div key={index} className={`circle ${color}`}>
-
                                 </div>
                             ))}
                         </div>

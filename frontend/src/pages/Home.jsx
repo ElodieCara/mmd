@@ -10,18 +10,18 @@ import temps from '../assets/homme.webp';
 import rompu from '../assets/revenant.webp';
 import croisés from '../assets/grace.webp';
 import { Card } from '../components/Card';
-
-// Exemple de données d'articles (simulé au départ)
-// const articles = [
-//   { id: 1, title: "Article 1", image: MdnL, views: 150 },
-//   { id: 2, title: "Article 2", image: MesMoires, views: 500 },
-//   { id: 3, title: "Article 3", image: fil, views: 300 },
-// ];
+import { SecondaryNav } from '../components/SecondaryNav';
+import { Button } from '../components/Button';
+import DistributeCards from '../utils/DistributeCards';
 
 export default function Home() {
   const [articleData, setArticleData] = useState([]);
-  const [displayedArticles, setDisplayedArticles] = useState(6); // Limite initiale à 6 articles
+  const [displayedArticles, setDisplayedArticles] = useState(8); // Limite initiale à 6 articles
   const maxPopularArticles = 4; // Limite à 6 articles pour les articles populaires
+  const getNewsCardStyle = (index) => {
+    const styles = ["Card--news-style1", "Card--news-style2", "Card--news-style4", "Card--news-style3", "Card--news-style2", "Card--news-style1"];
+    return styles[index % styles.length]; // Répartir les styles en fonction de l'index
+  };
 
   // Récupérer les articles depuis le backend avec Axios
   useEffect(() => {
@@ -70,17 +70,7 @@ export default function Home() {
       <Navbar />
       {/* ------------- Nav ------------- */}
       <div className="Home">
-        <div className="Home__nav">
-          <div className="Home__nav-left">
-            <h2>Home</h2>
-          </div>
-          <div className="Home__nav-middle">
-            <h2>News</h2><h2>Articles</h2><h2>Catégories</h2><h2>A Propos</h2><h2>Contact</h2>
-          </div>
-          <div className="Home__nav-right">
-            <img src="" alt="" />
-          </div>
-        </div>
+        <SecondaryNav />
         <hr />
         {/* ------------- Home ------------- */}
         <div className="Home__container">
@@ -151,24 +141,37 @@ export default function Home() {
               <hr />
               <h4>News</h4>
               <div className="Home__container__section--middle__block__cards">
-                {articleData.slice(0, displayedArticles).map(article => (
-                  <Card className="Card Card--news"
-                    key={article._id}  // Utilise l'ID unique de l'article
-                    title={article.title}  // Titre de l'article
-                    image={article.image}  // Image associée à l'article
-                    views={article.views}  // Nombre de vues
-                    onClick={() => handleClick(article._id)} /> // Gestion du clic pour incrémenter les vues
+                {DistributeCards(articleData.slice(0, displayedArticles), 4).map((column, colIndex) => (
+                  <div key={colIndex} className="column">
+                    {column.map((article, index) => {
+                      const globalIndex = colIndex * 8 + index; // Calcul d'un index unique pour chaque carte
+                      return (
+                        <Card
+                          key={article._id}
+                          className={`Card ${getNewsCardStyle(globalIndex)}`} // Utilise globalIndex pour les styles uniques
+                          title={article.title}
+                          createdAt={article.createdAt}
+                          content={article.content}
+                          description={article.description}
+                          image={article.image}
+                          views={article.views}
+                        />
+                      );
+                    })}
+                  </div>
                 ))}
               </div>
-
               {/* Bouton Voir Plus */}
-              {displayedArticles < articleData.length && (
-                <div className="see-more-container">
-                  <button onClick={handleShowMore} className="see-more-btn">
-                    Voir plus d'articles
-                  </button>
-                </div>
-              )}
+              {
+                displayedArticles < articleData.length && (
+                  <div className="see-more-container btn">
+                    <Button
+                      text="Voir plus d'articles"
+                      onClick={handleShowMore}
+                      linkTo="/all-articles" />
+                  </div>
+                )
+              }
             </div>
           </div>
           {/* ----------- Right Section ------------ */}
@@ -183,13 +186,18 @@ export default function Home() {
             </div>
             {/* Card spéciale pour l'article le plus populaire */}
             {mostViewedArticle && (
-              <Card
-                className="Card--highlight"
-                title={mostViewedArticle.title}
-                image={mostViewedArticle.image}
-                views={mostViewedArticle.views}
-                onClick={() => handleClick(mostViewedArticle._id)} // Gestion du clic
-              />
+              <>
+                {console.log(mostViewedArticle.image)}
+                <Card
+                  className="Card--highlight"
+                  createdAt={mostViewedArticle.createdAt}
+                  title={mostViewedArticle.title}
+                  // isDateOntop={true}
+                  image={mostViewedArticle.image}
+                  views={mostViewedArticle.views}
+                  onClick={() => handleClick(mostViewedArticle._id)} // Gestion du clic
+                />
+              </>
             )}
             {/* Affichage des articles */}
             <div className="Home__container__section--right__cards">
@@ -198,6 +206,8 @@ export default function Home() {
                 <Card
                   key={article._id}
                   className="Card--popular"
+                  date={article.date}
+                  // createdAt={article.createdAt}
                   title={article.title}
                   image={article.image}
                   views={article.views}

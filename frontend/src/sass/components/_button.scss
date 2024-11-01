@@ -1,0 +1,24 @@
+.Card__container .btn,
+.see-more-container .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 24px;
+    background-color: #D9D9D9;
+    border: 2px solid #D22A2A;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+    max-width: 105px;
+    height: 25px;
+
+    &:hover {
+        box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+    }
+}
+
+.Card--popular .btn,
+.Card--highlight .btn {
+    display: none;
+
+}

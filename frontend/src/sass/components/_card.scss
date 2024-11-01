@@ -1,3 +1,4 @@
+// ------------- Card générique --------------
 .Card {
     max-width: 300px;
     width: 100%;
@@ -60,7 +61,7 @@
 
             &__image {
                 width: 100%;
-                height: 150px;
+                height: 100px;
                 overflow: hidden;
 
                 & img {
@@ -79,7 +80,7 @@
 
                 h5,
                 p {
-                    font-size: 1.2em;
+                    font-size: 2.5em;
                     margin: 0;
                     text-align: left;
                 }
@@ -88,6 +89,11 @@
                     font-size: 0.9em;
                     color: #777;
                 }
+
+                &__view {
+                    display: none;
+                }
+
             }
 
 
@@ -105,8 +111,23 @@
                 box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
             }
         }
+
+        &__footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+
+
+            &__date {
+                display: flex;
+                justify-content: flex-end;
+
+            }
+        }
     }
 
+
+    //  -------------- Card populaires -------------------
     &--popular {
         max-width: 100%;
         height: 150px;
@@ -138,6 +159,10 @@
 
             &__top {
                 display: none;
+
+                &__date {
+                    display: none;
+                }
             }
 
             &__body {
@@ -205,9 +230,11 @@
 
     }
 
+
+    // -------------Card populaire première ------------------
     /* Style spécial pour la première card (la plus populaire) */
     &--highlight {
-        max-width: 100% !important;
+        // max-width: 0 !important;
         width: 100%;
         border-radius: 15px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1),
@@ -236,22 +263,28 @@
                 display: flex;
                 border-bottom: 0.1px solid grey;
                 height: 30px;
-                background-image: url('../assets/balle.svg');
+                // background-image: url('../assets/balle.svg');
                 background-size: contain;
                 background-position: left;
                 background-repeat: no-repeat;
-
-
-
                 /* On masque la partie supérieure, s'il n'y a pas d'éléments */
 
-
                 &__date {
-                    display: none;
-                }
+                    display: flex;
+                    flex-direction: row;
+                    font-size: 1.5em;
+                    font-weight: bold;
+                    align-items: flex-end;
 
-                &__button {
-                    display: none;
+                    .date-number {
+                        font-size: 2em;
+                    }
+
+                    .date-month {
+                        font-size: 1em;
+                        text-transform: uppercase;
+                        font-weight: normal;
+                    }
                 }
             }
 
@@ -307,11 +340,193 @@
                 }
             }
 
-            &__button {
-                display: none;
 
-            }
 
         }
     }
 }
+
+/* Styles spécifiques pour les variations des cards dans "News" */
+.Card--news-style1 {
+    background-color: #9e2626;
+    /* Une légère variation de couleur */
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    grid-row: span 2;
+
+    .Card__container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100%;
+
+        &__body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+
+            &__image {
+                display: none;
+            }
+
+            &__bottom {
+                display: flex;
+                justify-content: flex-start;
+            }
+        }
+
+
+        &__top {
+            border-bottom: 0;
+
+            &__date {
+                display: flex;
+            }
+
+            &__button {
+                display: none;
+            }
+        }
+    }
+}
+
+.Card--news-style2 {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    height: 350px;
+
+
+    .Card__container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100%;
+
+        &__top {
+            border-bottom: none;
+
+            &__button {
+                .red-circle {
+                    display: none;
+                }
+            }
+        }
+
+        &__body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+
+            // &__image {
+            //     display: none;
+            // }
+
+            &__bottom {
+                display: flex;
+                justify-content: flex-start;
+
+                &__text {
+                    & p {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.Card--news-style3 {
+    background-color: #0e0202;
+    border: 1px solid #bbb;
+    height: 450px;
+
+    .Card__container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100%;
+
+        &__top {
+            border-bottom: none;
+
+            &__button {
+                .red-circle {
+                    display: none;
+                }
+            }
+        }
+
+        &__body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+
+            // &__image {
+            //     display: none;
+            // }
+
+            &__bottom {
+                display: flex;
+                justify-content: flex-start;
+
+                &__text {
+                    & p {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.Card--news-style4 {
+    background-color: #0e0202;
+    border: 1px solid #bbb;
+    height: 400px;
+
+    .Card__container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100%;
+
+        &__top {
+            border-bottom: none;
+
+            &__button {
+                .red-circle {
+                    display: none;
+                }
+            }
+        }
+
+        &__body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+
+            // &__image {
+            //     display: none;
+            // }
+
+            &__bottom {
+                display: flex;
+                justify-content: flex-start;
+
+                &__text {
+                    & p {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Les autres styles restent les mêmes */
