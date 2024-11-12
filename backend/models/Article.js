@@ -8,7 +8,8 @@ const articleSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
   category: { type: String },
   tags: { type: [String] },
-  views: { type: Number, default: 0 }
+  views: { type: Number, default: 0 },
+  type: { type: String, enum: ["Card--news-style1", "Card--news-style2", "Card--news-style3", "Card--news-style4"], default: "Card--news-style1" }
 });
 
 module.exports = mongoose.model('Article', articleSchema);

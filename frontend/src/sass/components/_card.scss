@@ -1,6 +1,6 @@
 // ------------- Card générique --------------
 .Card {
-    max-width: 300px;
+    // max-width: 300px;
     width: 100%;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -118,9 +118,10 @@
             align-items: flex-end;
 
 
-            &__date {
+            & span {
                 display: flex;
                 justify-content: flex-end;
+                font-size: 12px !important;
 
             }
         }
@@ -138,11 +139,9 @@
             0 10px 15px rgba(0, 0, 0, 0.2);
         /* Ombre plus prononcée en bas */
         overflow: hidden;
-        background-color: white;
+        background-color: #ddd;
         font-family: Arial, sans-serif;
-        background-color: transparent;
         margin-bottom: 18px;
-
 
         .Card__container {
             height: 100%;
@@ -169,6 +168,7 @@
                 display: flex;
                 flex-direction: row;
 
+
                 &__image {
                     flex: 0 0 40%;
                     overflow: hidden;
@@ -183,20 +183,21 @@
 
                 &__bottom {
                     padding: 20px 0;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
+                    flex: 1;
+                    display: flex !important;
+                    flex-direction: column;
+                    justify-content: center;
 
                     &__text {
                         flex: 1;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
+                        // display: flex;
+                        // flex-direction: column;
+                        // justify-content: center;
                         /* Centrer verticalement le texte */
                         padding: 5px;
 
                         h5,
-                        p {
+                        span {
                             margin: 0;
                             /* Supprimer les marges par défaut */
                             line-height: 1.2em;
@@ -204,18 +205,20 @@
                         }
 
                         h5 {
-                            font-size: 1em;
+                            font-size: 1em !important;
+                            ;
                             /* Réduire la taille de police */
                         }
 
-                        p {
-                            font-size: 0.8em;
+                        span {
+                            font-size: 0.6em !important;
                             /* Réduire la taille de police */
                         }
                     }
 
                     &__view {
-                        font-size: 0.7em;
+                        display: block;
+                        font-size: 0.3em;
                     }
                 }
             }
@@ -224,10 +227,7 @@
                 display: none;
 
             }
-
         }
-
-
     }
 
 
@@ -241,9 +241,9 @@
             /* Ombre subtile */
             0 10px 15px rgba(0, 0, 0, 0.2);
         /* Ombre plus prononcée en bas */
-        background-color: transparent;
+        background-color: #ddd;
         /* Fond transparent */
-        // padding: 20px;
+        padding: 0 15px !important;
         overflow: hidden;
         position: relative;
         font-family: Arial, sans-serif;
@@ -255,14 +255,15 @@
             flex-direction: column;
             justify-content: space-between;
             height: 100%;
-            gap: 2rem;
+            padding: 0;
+            // gap: 2rem;
 
 
             /* Pas de bouton, pas de point rouge, pas de date */
             &__top {
                 display: flex;
                 border-bottom: 0.1px solid grey;
-                height: 30px;
+                height: 75px;
                 // background-image: url('../assets/balle.svg');
                 background-size: contain;
                 background-position: left;
@@ -327,15 +328,16 @@
                             /* Réduire la taille de police */
                         }
 
-                        p {
-                            font-size: 0.8em;
+                        span {
+                            font-size: 0.6em;
                             /* Réduire la taille de police */
 
                         }
                     }
 
                     &__view {
-                        font-size: 0.7em;
+                        display: block;
+                        font-size: 0.4em;
                     }
                 }
             }
@@ -348,12 +350,12 @@
 
 /* Styles spécifiques pour les variations des cards dans "News" */
 .Card--news-style1 {
-    background-color: #9e2626;
+    background-color: #ddd;
     /* Une légère variation de couleur */
     border: 1px solid #ddd;
     display: flex;
     flex-direction: column;
-    height: 500px;
+    height: 350px;
     grid-row: span 2;
 
     .Card__container {
@@ -367,14 +369,23 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-
-            &__image {
-                display: none;
-            }
+            justify-content: space-between;
 
             &__bottom {
                 display: flex;
                 justify-content: flex-start;
+
+                &__text {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    gap: 0.5rem;
+
+                    & span {
+                        font-size: 8px;
+                    }
+                }
             }
         }
 
@@ -394,9 +405,10 @@
 }
 
 .Card--news-style2 {
-    background-color: #f9f9f9;
+    // background-color: #f9f9f9;
+    background-color: #ddd;
     border: 1px solid #ccc;
-    height: 350px;
+    height: 500px;
 
 
     .Card__container {
@@ -421,9 +433,11 @@
             display: flex;
             flex-direction: column;
 
-            // &__image {
-            //     display: none;
-            // }
+            &__image {
+                width: 100%;
+                height: 375px;
+                overflow: hidden;
+            }
 
             &__bottom {
                 display: flex;
@@ -440,7 +454,8 @@
 }
 
 .Card--news-style3 {
-    background-color: #0e0202;
+    // background-color: #0e0202;
+    background-color: #ddd;
     border: 1px solid #bbb;
     height: 450px;
 
@@ -449,6 +464,7 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
+        position: relative;
         height: 100%;
 
         &__top {
@@ -466,26 +482,37 @@
             display: flex;
             flex-direction: column;
 
-            // &__image {
-            //     display: none;
-            // }
+            &__image {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+            }
 
             &__bottom {
                 display: flex;
                 justify-content: flex-start;
 
                 &__text {
-                    & p {
-                        display: none;
+                    position: absolute;
+                    top: 333px;
+                    left: 21px;
+                    color: white;
+                    font-size: 45px;
+
+                    & span {
+                        font-size: 12px;
                     }
                 }
             }
         }
+
+
     }
 }
 
 .Card--news-style4 {
-    background-color: #0e0202;
+    // background-color: #0e0202;
+    background-color: #ddd;
     border: 1px solid #bbb;
     height: 400px;
 
@@ -493,7 +520,7 @@
         flex: 1;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content: space-between;
         height: 100%;
 
         &__top {
@@ -511,9 +538,18 @@
             display: flex;
             flex-direction: column;
 
-            // &__image {
-            //     display: none;
-            // }
+            &__image {
+                width: 100%;
+                height: auto;
+                overflow: hidden;
+
+                & img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 10px;
+                }
+            }
 
             &__bottom {
                 display: flex;

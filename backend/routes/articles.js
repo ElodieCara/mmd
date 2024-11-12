@@ -62,6 +62,17 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+// DELETE all articles
+router.delete('/', async (req, res) => {
+  try {
+    await Article.deleteMany({});  // Supprime tous les articles de la collection
+    res.status(200).json({ message: 'Tous les articles ont été supprimés avec succès.' });
+  } catch (err) {
+    res.status(500).json({ message: 'Erreur lors de la suppression des articles', error: err.message });
+  }
+});
+
+
 // Route pour incrémenter les vues d'un article
 router.post('/views', async (req, res) => {
   const { articleId } = req.body;

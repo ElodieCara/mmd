@@ -18,6 +18,7 @@ export default function Home() {
   const [articleData, setArticleData] = useState([]);
   const [displayedArticles, setDisplayedArticles] = useState(8); // Limite initiale à 6 articles
   const maxPopularArticles = 4; // Limite à 6 articles pour les articles populaires
+
   const getNewsCardStyle = (index) => {
     const styles = ["Card--news-style1", "Card--news-style2", "Card--news-style4", "Card--news-style3", "Card--news-style2", "Card--news-style1"];
     return styles[index % styles.length]; // Répartir les styles en fonction de l'index
@@ -149,6 +150,7 @@ export default function Home() {
                         <Card
                           key={article._id}
                           className={`Card ${getNewsCardStyle(globalIndex)}`} // Utilise globalIndex pour les styles uniques
+                          type={getNewsCardStyle(globalIndex)}
                           title={article.title}
                           createdAt={article.createdAt}
                           content={article.content}
@@ -192,7 +194,7 @@ export default function Home() {
                   className="Card--highlight"
                   createdAt={mostViewedArticle.createdAt}
                   title={mostViewedArticle.title}
-                  // isDateOntop={true}
+                  type="highlight"
                   image={mostViewedArticle.image}
                   views={mostViewedArticle.views}
                   onClick={() => handleClick(mostViewedArticle._id)} // Gestion du clic
@@ -207,7 +209,7 @@ export default function Home() {
                   key={article._id}
                   className="Card--popular"
                   date={article.date}
-                  // createdAt={article.createdAt}
+                  type="popular"
                   title={article.title}
                   image={article.image}
                   views={article.views}
