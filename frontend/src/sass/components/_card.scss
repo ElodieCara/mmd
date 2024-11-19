@@ -73,16 +73,16 @@
             }
 
             &__bottom {
-                padding: 20px 0;
+                // padding: 20px 0;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
 
-                h5,
-                p {
+                h5 {
                     font-size: 2.5em;
                     margin: 0;
                     text-align: left;
+                    @include art-nouveau-text;
                 }
 
                 p {
@@ -269,6 +269,7 @@
                 background-position: left;
                 background-repeat: no-repeat;
                 /* On masque la partie supérieure, s'il n'y a pas d'éléments */
+                @include art-nouveau-text;
 
                 &__date {
                     display: flex;
@@ -383,7 +384,11 @@
                     gap: 0.5rem;
 
                     & span {
-                        font-size: 8px;
+                        font-size: 13px;
+                    }
+
+                    & p {
+                        font-size: 100%;
                     }
                 }
             }
@@ -432,6 +437,7 @@
             flex: 1;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
 
             &__image {
                 width: 100%;
@@ -444,8 +450,10 @@
                 justify-content: flex-start;
 
                 &__text {
-                    & p {
-                        display: none;
+                    font-size: 2.5em;
+
+                    & h5 {
+                        @include art-nouveau-text;
                     }
                 }
             }
@@ -497,10 +505,12 @@
                     top: 333px;
                     left: 21px;
                     color: white;
+                    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
                     font-size: 45px;
 
                     & span {
                         font-size: 12px;
+                        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
                     }
                 }
             }
@@ -537,6 +547,7 @@
             flex: 1;
             display: flex;
             flex-direction: column;
+            gap: 5%;
 
             &__image {
                 width: 100%;

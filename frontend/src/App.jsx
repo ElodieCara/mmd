@@ -7,6 +7,7 @@ import ErrorPage from "./pages/ErrorPage"; // Vérifie que ce fichier existe
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./sass/style.scss";
 import AllArticles from "./pages/AllArticles";
+import ArticleDetail from "./pages/ArticleDetail";
 
 // Configuration des routes avec createBrowserRouter
 const router = createBrowserRouter([
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
   {
     path: "/contact",
     element: <Contact />, // Composant Contact
+  },
+  {
+    path: "/article/:articleId", // Route dynamique pour les articles
+    element: <ArticleDetail />, // Composant pour afficher les détails d’un article
   },
 ]);
 

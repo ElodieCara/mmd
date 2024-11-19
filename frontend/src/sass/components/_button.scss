@@ -1,11 +1,13 @@
 .Card__container .btn,
-.see-more-container .btn {
+.see-more-container .btn,
+.see-more-btn .btn {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 14px 24px;
-    background-color: #D9D9D9;
+    background-color: #a1a1a1;
     border: 2px solid #D22A2A;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3), 0px 8px 12px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     cursor: pointer;
     transition: box-shadow 0.3s ease;

@@ -203,7 +203,6 @@ export default function Home() {
             )}
             {/* Affichage des articles */}
             <div className="Home__container__section--right__cards">
-
               {otherArticles.slice(0, maxPopularArticles).map((article) => (
                 <Card
                   key={article._id}

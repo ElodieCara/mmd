@@ -25,6 +25,30 @@
   }
 }
 
+// Mixin pour un effet de texte incurvé, inspiré de l'Art Nouveau
+@mixin art-nouveau-text($color: #2d2d2a, $shadow-color: rgba(0, 0, 0, 0.3)) {
+  color: $color;
+  font-weight: 600;
+  text-shadow: 1px 1px 3px $shadow-color;
+  letter-spacing: 0.05em;
+  transform: skew(-5deg); // Inclinaison subtile pour un style rétro
+}
+
+// Mixin pour un encadrement Art Nouveau
+@mixin nouveau-border($border-color: #a67c52, $background-color: rgba(255, 235, 205, 0.8)) {
+  background-color: $background-color;
+  padding: 10px 20px;
+  border: 2px solid $border-color;
+  border-radius: 10px 25px 10px 25px; // Bords asymétriques pour un effet organique
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+// Mixin pour un effet de halo lumineux autour du texte
+@mixin glow-effect-text($glow-color: rgba(255, 255, 255, 0.8), $glow-size: 10px) {
+  color: white;
+  text-shadow: 0 0 $glow-size $glow-color;
+  font-weight: bold;
+}
 
 .container {
   @include flex-center;
