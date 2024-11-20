@@ -50,7 +50,7 @@
   font-weight: bold;
 }
 
-.container {
+@mixin container {
   @include flex-center;
   height: 100vh;
 }

@@ -151,6 +151,8 @@ export default function Home() {
                           key={article._id}
                           className={`Card ${getNewsCardStyle(globalIndex)}`} // Utilise globalIndex pour les styles uniques
                           type={getNewsCardStyle(globalIndex)}
+                          tags={article.tags}
+                          category={article.category}
                           title={article.title}
                           createdAt={article.createdAt}
                           content={article.content}

@@ -6,6 +6,7 @@ const Article = require('../models/Article');
 router.get('/', async (req, res) => {
   try {
     const articles = await Article.find();
+    console.log("Articles renvoyés :", articles);
     res.json(articles);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -49,6 +50,30 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+// PUT to update article tags
+router.put('/:id/tags', async (req, res) => {
+  try {
+    const { tags } = req.body; // Les tags envoyés depuis le frontend
+    if (!tags || !Array.isArray(tags)) {
+      return res.status(400).json({ message: 'Les tags doivent être un tableau.' });
+    }
+
+    const updatedArticle = await Article.findByIdAndUpdate(
+      req.params.id,
+      { tags },
+      { new: true, runValidators: true } // Renvoie l'article mis à jour avec les validateurs du modèle
+    );
+
+    if (!updatedArticle) {
+      return res.status(404).json({ message: 'Article non trouvé.' });
+    }
+
+    res.status(200).json(updatedArticle);
+  } catch (error) {
+    res.status(500).json({ message: 'Erreur lors de la mise à jour des tags', error });
+  }
+});
+
 // DELETE an article
 router.delete('/:id', async (req, res) => {
   try {
@@ -65,20 +90,18 @@ router.delete('/:id', async (req, res) => {
 // DELETE all articles
 router.delete('/', async (req, res) => {
   try {
-    await Article.deleteMany({});  // Supprime tous les articles de la collection
+    await Article.deleteMany({}); // Supprime tous les articles de la collection
     res.status(200).json({ message: 'Tous les articles ont été supprimés avec succès.' });
   } catch (err) {
     res.status(500).json({ message: 'Erreur lors de la suppression des articles', error: err.message });
   }
 });
 
-
 // Route pour incrémenter les vues d'un article
 router.post('/views', async (req, res) => {
   const { articleId } = req.body;
 
   try {
-    // Rechercher l'article par son ID et incrémenter les vues
     const article = await Article.findById(articleId);
     if (article) {
       article.views += 1; // Incrémenter les vues

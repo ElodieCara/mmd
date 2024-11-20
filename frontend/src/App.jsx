@@ -8,6 +8,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./sass/style.scss";
 import AllArticles from "./pages/AllArticles";
 import ArticleDetail from "./pages/ArticleDetail";
+import Category from "./pages/Category";
+import Tag from "./pages/Tag";
 
 // Configuration des routes avec createBrowserRouter
 const router = createBrowserRouter([
@@ -31,6 +33,14 @@ const router = createBrowserRouter([
   {
     path: "/article/:articleId", // Route dynamique pour les articles
     element: <ArticleDetail />, // Composant pour afficher les détails d’un article
+  },
+  {
+    path: "/categories",
+    element: <Category />,
+  },
+  {
+    path: "/tags",
+    element: <Tag />,
   },
 ]);
 

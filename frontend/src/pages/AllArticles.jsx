@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Card } from "../components/Card";
-import { Button } from "../components/Button";
 import { Navbar } from "../components/Navbar";
 import { SecondaryNav } from "../components/SecondaryNav";
 import Pagination from "../components/Pagination";
+import Breadcrumb from "../components/Breadcrumb"; // Importez le fil d'Ariane
 
 export default function AllArticles() {
     const [articles, setArticles] = useState([]); // Articles depuis l'API
@@ -18,7 +18,11 @@ export default function AllArticles() {
     useEffect(() => {
         axios
             .get("http://localhost:5001/api/articles")
-            .then((response) => setArticles(response.data))
+            // .then((response) => setArticles(response.data))
+            .then((response) => {
+                console.log("Données reçues depuis l'API :", response.data);
+                setArticles(response.data);
+            })
             .catch((error) => console.error("Erreur lors de la récupération des articles:", error));
     }, []);
 
@@ -51,6 +55,7 @@ export default function AllArticles() {
             <Navbar />
             <SecondaryNav />
             <div className="all-articles">
+                <Breadcrumb />
                 <h1 className="all-articles__title">Tous nos articles</h1>
                 {currentPage > 1 && <h2 className="all-articles__title__subtitle">Page {currentPage}</h2>}
 
@@ -97,9 +102,12 @@ export default function AllArticles() {
                             }
                             articleId={article._id}
                             views={article.views}
+                            tags={article.tags}
+                            category={article.category}
                         />
                     ))}
                 </div>
+
 
                 {/* Pagination en bas */}
                 <Pagination

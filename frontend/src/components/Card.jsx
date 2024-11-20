@@ -17,8 +17,11 @@ export const Card = ({
     description,
     content,
     articleId,
-    type
+    type,
+    tags = [],
+    category
 }) => {
+    console.log("Category reçue dans Card :", { title, category, tags });
     const dateObj = createdAt ? new Date(createdAt) : null;
     const formattedDate = dateObj && !isNaN(dateObj)
         ? className.includes('Card--news-style')
@@ -33,17 +36,17 @@ export const Card = ({
             case 'popular':
                 return <PopularCard title={title} content={content} image={image} views={views} />;
             case 'Card--news-style1':
-                return <NewsStyle1Card title={title} content={content} description={description} formattedDate={formattedDate} articleId={articleId} />;
+                return <NewsStyle1Card title={title} tags={tags} category={category} content={content} description={description} formattedDate={formattedDate} articleId={articleId} />;
             case 'Card--news-style2':
-                return <NewsStyle2Card title={title} image={image} articleId={articleId} />;
+                return <NewsStyle2Card title={title} tags={tags} category={category} image={image} articleId={articleId} />;
             case 'Card--news-style3':
-                return <NewsStyle3Card title={title} image={image} formattedDate={formattedDate} />;
+                return <NewsStyle3Card title={title} tags={tags} category={category} image={image} formattedDate={formattedDate} />;
             case 'Card--news-style4':
-                return <NewsStyle4Card title={title} content={content} description={description} image={image} articleId={articleId} />;
+                return <NewsStyle4Card title={title} tags={tags} category={category} content={content} description={description} image={image} articleId={articleId} />;
             case 'allarticles':
-                return <AllArticlesCard image={image} title={title} content={content} articleId={articleId} dateObj={dateObj} />;
+                return <AllArticlesCard image={image} title={title} category={category} content={content} articleId={articleId} dateObj={dateObj} />;
             default:
-                return <NewsStyle1Card title={title} content={content} description={description} formattedDate={formattedDate} articleId={articleId} />;
+                return <NewsStyle1Card title={title} tags={tags} category={category} content={content} description={description} formattedDate={formattedDate} articleId={articleId} />;
         }
     };
 

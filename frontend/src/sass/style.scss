@@ -3,11 +3,13 @@
 @import "./base/fonts";
 @import "./base/typography";
 @import "./base/variables";
+@import "./base/layout";
 @import "./utils/variables";
 @import "./components/navbar";
 @import "./components/secondaryNav";
 @import "./components/card";
 @import "./components/button";
 @import "./components/pagination";
+@import "./components/breadcrumb";
 @import "./pages/home";
 @import "./pages/allArticles";

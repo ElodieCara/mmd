@@ -1,0 +1,39 @@
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin: 80px 0 40px;
+
+
+    ul {
+        list-style: none;
+        display: flex;
+        padding: 0;
+        margin: 0;
+
+        li {
+            &:not(:last-child)::after {
+                content: ">";
+                margin: 0 8px;
+                color: #D22A2A; // Rouge pour le séparateur
+            }
+
+            a {
+                text-decoration: none;
+                color: #555; // Gris neutre pour les liens inactifs
+                font-weight: bold;
+                transition: color 0.3s;
+
+                &:hover {
+                    color: #D22A2A; // Rouge sur hover pour correspondre à votre thème
+                }
+            }
+
+            &.breadcrumb__active {
+                font-weight: bold;
+                color: #000; // Noir ou couleur principale pour l'élément actif
+                pointer-events: none;
+            }
+        }
+    }
+}
