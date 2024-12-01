@@ -1,0 +1,52 @@
+// .carousel {
+//     display: flex;
+//     gap: 1rem;
+//     overflow-x: auto;
+//     /* Permet de scroller horizontalement si nécessaire */
+//     scroll-behavior: smooth;
+//     /* Animation douce pour le défilement */
+//     padding: 1rem 0;
+
+//     &__card {
+//         flex: 0 0 calc(33.33% - 1rem);
+//         /* Chaque carte prend un tiers */
+//         max-width: 300px;
+//         background: #fff;
+//         border: 1px solid #ddd;
+//         border-radius: 10px;
+//         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+//         overflow: hidden;
+//         transition: transform 0.3s ease, box-shadow 0.3s ease;
+//         cursor: pointer;
+
+//         &:hover {
+//             transform: scale(1.05);
+//             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+//         }
+
+//         &__image {
+//             height: 150px;
+//             background-size: cover;
+//             background-position: center;
+//             border-bottom: 1px solid #ddd;
+//         }
+
+//         &__content {
+//             padding: 0.5rem;
+
+//             h3 {
+//                 font-size: 1rem;
+//                 font-weight: bold;
+//                 margin: 0.5rem 0;
+//                 text-align: center;
+//                 color: #333;
+//             }
+
+//             p {
+//                 font-size: 0.9rem;
+//                 color: #666;
+//                 text-align: justify;
+//             }
+//         }
+//     }
+// }

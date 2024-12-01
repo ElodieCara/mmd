@@ -23,7 +23,9 @@ const HighlightCard = ({ title, content, image = cheval, views, articleId, dateO
                     <span>{content || 'Pas de contenu disponible.'}</span>
                 </div>
             </div>
-            <p className='Card__container__body__bottom__view'>{views || 0} vues</p>
+            <div className='Card__container__body__bottom__view'>
+                {views || 0} vues
+            </div>
         </div>
         <div className="Card__container__footer">
             <Button text="Voir plus" linkTo={`/article/${articleId}`} />

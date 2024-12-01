@@ -25,6 +25,13 @@
   }
 }
 
+@mixin responsive-image($max-width: 100%, $height: auto) {
+  max-width: $max-width;
+  height: $height;
+  display: block;
+  object-fit: cover;
+}
+
 // Mixin pour un effet de texte incurvé, inspiré de l'Art Nouveau
 @mixin art-nouveau-text($color: #2d2d2a, $shadow-color: rgba(0, 0, 0, 0.3)) {
   color: $color;
@@ -53,6 +60,8 @@
 @mixin container {
   @include flex-center;
   height: 100vh;
+  width: 1200px;
+  margin: 0 auto;
 }
 
 /* Effet de spot lumineux sur les cercles */
@@ -187,5 +196,53 @@
   100% {
     opacity: 1;
     /* Allumage complet */
+  }
+}
+
+/* Animation coup de vent */
+@keyframes gusty-wind {
+  0% {
+    transform: translateX(-50%) rotateX(0deg);
+    /* Position initiale */
+  }
+
+  10% {
+    transform: translateX(-50%) rotateX(20deg);
+    /* Coup de vent initial */
+  }
+
+  20% {
+    transform: translateX(-50%) rotateX(-15deg);
+    /* Balancement arrière marqué */
+  }
+
+  30% {
+    transform: translateX(-50%) rotateX(10deg);
+    /* Retour vers l'avant, moins fort */
+  }
+
+  40% {
+    transform: translateX(-50%) rotateX(-5deg);
+    /* Balancement arrière réduit */
+  }
+
+  50% {
+    transform: translateX(-50%) rotateX(3deg);
+    /* Balancement léger avant */
+  }
+
+  60% {
+    transform: translateX(-50%) rotateX(-1deg);
+    /* Ralentissement progressif */
+  }
+
+  70% {
+    transform: translateX(-50%) rotateX(0deg);
+    /* Stabilisation */
+  }
+
+  100% {
+    transform: translateX(-50%) rotateX(0deg);
+    /* Arrêt complet */
   }
 }

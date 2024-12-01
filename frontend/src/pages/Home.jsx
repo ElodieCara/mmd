@@ -72,7 +72,7 @@ export default function Home() {
       {/* ------------- Nav ------------- */}
       <div className="Home">
         <SecondaryNav />
-        <hr />
+        {/* <hr /> */}
         {/* ------------- Home ------------- */}
         <div className="Home__container">
           <div className="Home__container__section--left">
@@ -129,18 +129,26 @@ export default function Home() {
                   <span>(elles)</span>
                 </h3>
               </div>
-              <div className="Home__container__section--middle__cards card-2"
+              <div className="Home__container__section--middle__cards card-2 "
                 style={{
                   backgroundImage: `url(${MesMoires})`
                 }}>
-                <img src="" alt="" />
+                <div className='card-2__content'>
+                  <h3>Votre Titre ici</h3>
+                  <Button
+                    className="btn--white"
+                    text="Voir plus "
+                    onClick={handleShowMore}
+                    linkTo="/all-articles" />
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse scelerisque.</p>
+                </div>
               </div>
             </div>
 
             {/* ---------- Middle Section ------------ */}
             <div className="Home__container__section--middle__block">
-              <hr />
-              <h4>News</h4>
+              {/* <hr /> */}
+              {/* <h4>News</h4> */}
               <div className="Home__container__section--middle__block__cards">
                 {DistributeCards(articleData.slice(0, displayedArticles), 4).map((column, colIndex) => (
                   <div key={colIndex} className="column">

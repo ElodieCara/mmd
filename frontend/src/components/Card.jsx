@@ -6,10 +6,10 @@ import NewsStyle2Card from './NewsStyle2Card';
 import NewsStyle3Card from './NewsStyle3Card';
 import NewsStyle4Card from './NewsStyle4Card';
 import AllArticlesCard from './AllArticlesCard';
-
+import CategoryCard from './CategoryCard'; // Vérifiez bien que ce composant existe
 
 export const Card = ({
-    className,
+    className = '',
     title,
     createdAt,
     image,
@@ -45,8 +45,10 @@ export const Card = ({
                 return <NewsStyle4Card title={title} tags={tags} category={category} content={content} description={description} image={image} articleId={articleId} />;
             case 'allarticles':
                 return <AllArticlesCard image={image} title={title} category={category} content={content} articleId={articleId} dateObj={dateObj} />;
+            case 'category-card': // Ajout du rendu pour `CategoryCard`
+                return <CategoryCard image={image} title={title} content={content} articleId={articleId} />;
             default:
-                return <NewsStyle1Card title={title} tags={tags} category={category} content={content} description={description} formattedDate={formattedDate} articleId={articleId} />;
+                return <NewsStyle1Card title={title} content={content} formattedDate={formattedDate} articleId={articleId} />;
         }
     };
 

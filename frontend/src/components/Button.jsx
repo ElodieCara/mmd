@@ -14,7 +14,7 @@ export const Button = ({ text, onClick, linkTo }) => {
     };
 
     return (
-        <button className="btn" onClick={handleClick}>
+        <button className="btn btn--white" onClick={handleClick}>
             {text}
         </button>
     );

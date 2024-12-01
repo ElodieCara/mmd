@@ -1,5 +1,6 @@
 import React from 'react';
 import cheval from '../assets/cheval.webp';
+import IconEyes from '../assets/Eye.png';
 
 const PopularCard = ({ title, content, image = cheval, views }) => (
     <>
@@ -13,7 +14,10 @@ const PopularCard = ({ title, content, image = cheval, views }) => (
                     <span>{content || 'Pas de contenu disponible.'}</span>
                 </div>
             </div>
-            <p className='Card__container__body__bottom__view'>{views || 0} vues</p>
+            <div className='Card__container__body__bottom__view'>
+                <img src={IconEyes} alt="Icon Eyes" />
+                {views || 0} vues
+            </div>
         </div>
     </>
 );

@@ -110,7 +110,7 @@
             flex-direction: column;
             // padding: 30px;
             flex-basis: 60%;
-            gap: 20px;
+            // gap: 20px;
 
             &__cards {
                 display: flex;
@@ -189,6 +189,7 @@
         }
 
         .card-2 {
+            position: relative;
             flex-basis: 70%;
             // width: 573px;
             height: 405px;
@@ -197,8 +198,53 @@
             background-image: url('../../assets/MesMoires.webp');
             background-position: 100% 5%;
             background-size: 100% auto;
+            overflow: hidden;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 55%;
+                background: linear-gradient(to right, rgb(0 0 0), rgb(0 0 0 / 0%));
+                z-index: 1;
+            }
+
+            &__content {
+                position: absolute;
+                top: 50%;
+                left: 5%;
+                /* Légèrement décalé à gauche */
+                transform: translateY(-50%);
+                /* Centre verticalement */
+                z-index: 2;
+                /* S'assurer qu'il est devant l'ombre */
+                color: white;
+                /* Texte en blanc */
+                max-width: 35%;
+
+                & h3 {
+                    font-size: 2rem;
+                    color: white;
+                    font-weight: bold;
+                    margin-bottom: 1rem;
+                }
+
+                & p {
+                    all: unset;
+                    /* Supprime tous les styles hérités */
+                    font-size: 1rem;
+                    line-height: normal;
+                    color: inherit;
+                    text-transform: none;
+                    font-family: $font-family-secondary !important;
+
+
+                }
+            }
         }
+
+
     }
-
-
 }
